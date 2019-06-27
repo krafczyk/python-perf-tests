@@ -25,11 +25,19 @@ short = args.short
 
 print("The {}th fibonachi number is: {}".format(fib_num, fib_basic.iterative(fib_num)))
 
-print(fib_basic.recursive_dynamic(fib_num))
-print(fib_basic.iterative(fib_num))
-print(fib_basic.power_matrix(fib_num))
+mods = { 'fib_basic': fib_basic}
 
+print("\nVerification of values:")
+for mod_name in mods:
+    print("module {}".format(mod_name))
+    for alg_name in mods[mod_name].algos:
+        print("{}: {}".format(alg_name, mods[mod_name].algos[alg_name](fib_num)))
+
+print("\nBegin testing performance")
 if not short:
-    print(timeit.timeit('fib_basic.recursive_dynamic({})'.format(fib_num), setup='import fib_basic', number=100000))
-    print(timeit.timeit('fib_basic.iterative({})'.format(fib_num), setup='import fib_basic', number=100000))
-    print(timeit.timeit('fib_basic.power_matrix({})'.format(fib_num), setup='import fib_basic', number=100000))
+    for mod_name in mods:
+        for alg_name in mods[mod_name].algos:
+            result = timeit.timeit('{}.{}({})'.format(mod_name,alg_name,fib_num),
+                                   setup='import {}'.format(mod_name),
+                                   number=num_executions)
+            print("{} {}: {}".format(mod_name, alg_name, result))
