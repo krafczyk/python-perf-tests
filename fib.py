@@ -26,3 +26,38 @@ def fib_iterative_basic_python(n):
         # save old value in low value
         fl = temp
     return fh
+
+def mat_mult(A, B):
+    C = [[0,0],[0,0]]
+    C[0][0] = A[0][0]*B[0][0]+A[0][1]*B[1][0]
+    C[0][1] = A[0][0]*B[0][1]+A[0][1]*B[1][1]
+    C[1][0] = A[1][0]*B[0][0]+A[1][1]*B[1][0]
+    C[1][1] = A[1][0]*B[0][1]+A[1][1]*B[1][1]
+    return C
+
+def mat_mult_v(A, v):
+    res = [[0],[0]]
+    res[0][0] = A[0][0]*v[0][0]+A[0][1]*v[1][0]
+    res[1][0] = A[1][0]*v[0][0]+A[1][1]*v[1][0]
+    return res
+
+def build_power_matrix(A, n):
+    if n == 1:
+        return A
+    if n%2 == 0:
+        Anew = build_power_matrix(A,(int)(n/2))
+        return mat_mult(Anew,Anew)
+    else:
+        Aev = build_power_matrix(A,(int)(n/2))
+        Aodd = mat_mult(Aev,A)
+        return mat_mult(Aev,Aodd)
+
+def fib_power_matrix_basic_python(n):
+    if n == 0:
+        return 0
+    if n <= 2:
+        return 1
+    init_vec = [[1],[1]]
+    A = [[1,1],[1,0]]
+    A_power = build_power_matrix(A,n-2)
+    return mat_mult_v(A_power,init_vec)[0][0]
