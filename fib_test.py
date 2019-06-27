@@ -1,4 +1,5 @@
 import fib_basic
+import fib_cython
 import timeit
 import argparse
 
@@ -25,7 +26,7 @@ short = args.short
 
 print("The {}th fibonachi number is: {}".format(fib_num, fib_basic.iterative(fib_num)))
 
-mods = { 'fib_basic': fib_basic}
+mods = { 'fib_basic': fib_basic, 'fib_cython': fib_cython}
 
 print("\nVerification of values:")
 for mod_name in mods:
