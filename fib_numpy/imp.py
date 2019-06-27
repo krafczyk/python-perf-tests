@@ -33,10 +33,10 @@ def build_power_matrix(A, n):
     if n == 1:
         return A
     if n%2 == 0:
-        Anew = build_power_matrix(A,(int)(n/2))
+        Anew = build_power_matrix(A,n//2)
         return np.matmul(Anew,Anew)
     else:
-        Aev = build_power_matrix(A,(int)(n/2))
+        Aev = build_power_matrix(A,n//2)
         return np.matmul(Aev,np.matmul(Aev,A))
 
 def power_matrix(n):

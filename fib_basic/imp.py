@@ -45,10 +45,10 @@ def build_power_matrix(A, n):
     if n == 1:
         return A
     if n%2 == 0:
-        Anew = build_power_matrix(A,(int)(n/2))
+        Anew = build_power_matrix(A,n//2)
         return mat_mult(Anew,Anew)
     else:
-        Aev = build_power_matrix(A,(int)(n/2))
+        Aev = build_power_matrix(A,n//2)
         Aodd = mat_mult(Aev,A)
         return mat_mult(Aev,Aodd)
 
