@@ -4,8 +4,8 @@ def recursive_dynamic_imp(n, dictionary):
     elif n in dictionary:
         return dictionary[n]
     else:
-        dictionary[n] = fib_recursive_dynamic_basic_python_imp(n-1,dictionary)+\
-                        fib_recursive_dynamic_basic_python_imp(n-2,dictionary)
+        dictionary[n] = recursive_dynamic_imp(n-1,dictionary)+\
+                        recursive_dynamic_imp(n-2,dictionary)
         return dictionary[n]
 
 def recursive_dynamic(n):
