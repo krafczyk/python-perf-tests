@@ -1,4 +1,4 @@
-def fib_recursive_dynamic_basic_python_imp(n, dictionary):
+def recursive_dynamic_imp(n, dictionary):
     if n < 2:
         return n
     elif n in dictionary:
@@ -8,11 +8,11 @@ def fib_recursive_dynamic_basic_python_imp(n, dictionary):
                         fib_recursive_dynamic_basic_python_imp(n-2,dictionary)
         return dictionary[n]
 
-def fib_recursive_dynamic_basic_python(n):
+def recursive_dynamic(n):
     new_dict = {}
-    return fib_recursive_dynamic_basic_python_imp(n, new_dict)
+    return recursive_dynamic_imp(n, new_dict)
 
-def fib_iterative_basic_python(n):
+def iterative(n):
     if n < 2:
         return n
     # initial values
@@ -52,7 +52,7 @@ def build_power_matrix(A, n):
         Aodd = mat_mult(Aev,A)
         return mat_mult(Aev,Aodd)
 
-def fib_power_matrix_basic_python(n):
+def power_matrix(n):
     if n == 0:
         return 0
     if n <= 2:

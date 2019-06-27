@@ -1,4 +1,4 @@
-import fib
+import fib_basic
 import timeit
 import argparse
 
@@ -23,13 +23,13 @@ short = args.short
 
 # The 92nd fibonacci number: 6343304842483959687 fits within an int64.
 
-print("The {}th fibonachi number is: {}".format(fib_num, fib.fib_iterative_basic_python(fib_num)))
+print("The {}th fibonachi number is: {}".format(fib_num, fib_basic.iterative(fib_num)))
 
-print(fib.fib_recursive_dynamic_basic_python(fib_num))
-print(fib.fib_iterative_basic_python(fib_num))
-print(fib.fib_power_matrix_basic_python(fib_num))
+print(fib_basic.recursive_dynamic(fib_num))
+print(fib_basic.iterative(fib_num))
+print(fib_basic.power_matrix(fib_num))
 
 if not short:
-    print(timeit.timeit('fib.fib_recursive_dynamic_basic_python({})'.format(fib_num), setup='import fib', number=100000))
-    print(timeit.timeit('fib.fib_iterative_basic_python({})'.format(fib_num), setup='import fib', number=100000))
-    print(timeit.timeit('fib.fib_power_matrix_basic_python({})'.format(fib_num), setup='import fib', number=100000))
+    print(timeit.timeit('fib_basic.recursive_dynamic({})'.format(fib_num), setup='import fib_basic', number=100000))
+    print(timeit.timeit('fib_basic.iterative({})'.format(fib_num), setup='import fib_basic', number=100000))
+    print(timeit.timeit('fib_basic.power_matrix({})'.format(fib_num), setup='import fib_basic', number=100000))
