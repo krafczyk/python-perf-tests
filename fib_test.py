@@ -24,14 +24,12 @@ else:
 
 short = args.short
 
-# The 92nd fibonacci number: 6343304842483959687 fits within an int64.
+# The 92nd fibonacci number: 7540113804746346429 fits within an int64.
 
 print("The {}th fibonachi number is: {}".format(fib_num, fib_basic.iterative(fib_num)))
 
 mods = { 'fib_basic': fib_basic, 'fib_numpy': fib_numpy, 'fib_cython': fib_cython,
          'fib_numba': fib_numba}
-
-print(fib_numba.power_matrix(fib_num))
 
 print("\nVerification of values:")
 for mod_name in mods:
