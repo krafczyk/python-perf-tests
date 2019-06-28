@@ -110,14 +110,15 @@ extern "C" int64_t iterative_asm(int64_t n) {
     int64_t count = n-2;
 
     asm("0:\n\t"
-        "xor %0 %1\n\t"
-        "xor %1 %0\n\t"
-        "xor %0 %1\n\t"
-        "sub %2 $1\n\t"
-        "jnz %2 0b"
-        : "=r" (fh)
-        : "r" (fl),
-          "r" (count));
+        "xor %0,%1\n\t"
+        "xor %1,%0\n\t"
+        "xor %0,%1\n\t"
+        "sub %2,1\n\t"
+        "cmp %2,0\n\t"
+        "jnz 0"
+        : "=r" (fh),
+          "+r" (fl),
+          "+r" (count));
 
     return fh;
 }
