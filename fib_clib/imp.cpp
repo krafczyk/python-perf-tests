@@ -100,3 +100,24 @@ extern "C" int64_t power_matrix(int64_t n) {
 
     return answer;
 }
+
+extern "C" int64_t iterative_asm(int64_t n) {
+    if(n < 2) {
+        return n;
+    }
+    int64_t fh = 1;
+    int64_t fl = 0;
+    int64_t count = n-2;
+
+    asm("0:\n\t"
+        "xor %0 %1\n\t"
+        "xor %1 %0\n\t"
+        "xor %0 %1\n\t"
+        "sub %2 $1\n\t"
+        "jnz %2 0b"
+        : "=r" (fh)
+        : "r" (fl),
+          "r" (count));
+
+    return fh;
+}
