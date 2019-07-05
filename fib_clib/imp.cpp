@@ -107,18 +107,20 @@ extern "C" int64_t iterative_asm(int64_t n) {
     }
     int64_t fh = 1;
     int64_t fl = 0;
-    int64_t count = n-2;
+    int64_t count = n-1;
 
-    asm("0:\n\t"
-        "xor %0,%1\n\t"
-        "xor %1,%0\n\t"
-        "xor %0,%1\n\t"
-        "sub %2,1\n\t"
-        "cmp %2,0\n\t"
-        "jnz 0"
-        : "=r" (fh),
-          "+r" (fl),
-          "+r" (count));
+    asm("L0:\n\t"
+        "xorq %%rax,%%rcx\n\t"
+        "xorq %%rcx,%%rax\n\t"
+        "xorq %%rax,%%rcx\n\t"
+        "addq %%rcx,%%rax\n\t"
+        "decq %%rdx\n\t"
+        "jnz L0\n\t"
+        : "=a" (fh)
+        : "a" (fh),
+          "c" (fl),
+          "d" (count)
+        :);
 
     return fh;
 }
