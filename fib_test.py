@@ -3,6 +3,7 @@ import fib_numpy
 import fib_cython
 import fib_numba
 import fib_clib
+import fib_asmlib
 import timeit
 import argparse
 
@@ -30,7 +31,7 @@ short = args.short
 print("The {}th fibonachi number is: {}".format(fib_num, fib_basic.iterative(fib_num)))
 
 mods = { 'fib_basic': fib_basic, 'fib_numpy': fib_numpy, 'fib_cython': fib_cython,
-        'fib_numba': fib_numba, 'fib_clib': fib_clib}
+        'fib_numba': fib_numba, 'fib_clib': fib_clib, 'fib_asmlib':fib_asmlib}
 
 print("\nVerification of values:")
 for mod_name in mods:
