@@ -1,7 +1,3 @@
-    .section .rodata
-    .text
-hellostring:
-    .string "Hello World! %li\n"
     .text
     .globl iterative
 iterative:
@@ -45,13 +41,4 @@ loop_short:
     decq %rdi
     jnz loop_short
 
-    ret
-
-    .text
-    .globl hello
-hello:
-    movq %rdi, %rsi
-    leaq hellostring(%rip), %rdi
-    movq $0, %rax
-    call printf@PLT
     ret
