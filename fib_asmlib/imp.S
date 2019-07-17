@@ -12,6 +12,8 @@ calc_body:
     movq $0,%rcx
     movq $1,%rax
 
+.p2align 4,,10
+.p2align 3
 loop:
     xorq %rcx,%rax
     xorq %rax,%rcx
@@ -31,6 +33,8 @@ iterative_short:
     movq $0,%rcx
     movq $1,%rax
 
+.p2align 5,,10
+.p2align 4
 loop_short:
     xorq %rcx,%rax
     xorq %rax,%rcx
